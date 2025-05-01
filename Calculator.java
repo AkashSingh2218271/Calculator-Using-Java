@@ -21,18 +21,32 @@ class Calculator {
     public static int mod(int a, int b) {
         return a % b;
     }
+    
+    public static double fact(double a) {
+        if (a <= 1) {
+            return 1;
+        }
+
+        return fact(a - 1) * a;
+    }
+
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
         int num1 = 0, num2 = 0;
+        double num = 0;
         char ch = ' ';
 
         while (ch != '#') {
-            System.out.println("Menu : \nEnter + for addition\nEnter - for subtraction\nEnter * for multiplication\nEnter / for division\nEnter % for modulus\nEnter # for exit\n");
+            System.out.println("Menu : \nEnter + for addition\nEnter - for subtraction\nEnter * for multiplication\nEnter / for division\nEnter % for modulus\nEnter ! for factorial\\n" + //
+                                "Enter # for exit\n");
             System.out.println("Enter your choice ");
             ch = sc.next().charAt(0);
 
-            if (ch != '#') {
+            if (ch == '!') {
+                System.out.println("Enter a number to find factorial ");
+                num = sc.nextDouble();
+            } else if (ch != '#') {
                 System.out.println("Enter value of num1 and num2 respectively ");
                 num1 = sc.nextInt();
                 num2 = sc.nextInt();
@@ -54,11 +68,14 @@ class Calculator {
                 case '%':
                     System.out.println("Modulus of " + num1 + " and " + num2 + " is " + mod(num1, num2));
                     break;
+                case '!':
+                    System.out.println("Factorial of " + num + " is " + fact(num));
+                    break;
                 case '#':
                     System.out.println("Exiting the calculator.");
                     break;
                 default:
-                    System.out.println("Enter a valid input.\n");
+                    System.out.println("Invalid operator.");
                     break;
             }
         }
