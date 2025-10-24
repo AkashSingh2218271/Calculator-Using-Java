@@ -30,6 +30,11 @@ class Calculator {
         return fact(a - 1) * a;
     }
 
+    public static double power(double a, double b) {
+        if (b == 0) return 1;
+        return a * power(a, b-1);
+    }
+
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
@@ -38,8 +43,8 @@ class Calculator {
         char ch = ' ';
 
         while (ch != '#') {
-            System.out.println("Menu : \nEnter + for addition\nEnter - for subtraction\nEnter * for multiplication\nEnter / for division\nEnter % for modulus\nEnter ! for factorial\\n" + //
-                                "Enter # for exit\n");
+            System.out.println("Menu : \nEnter + for addition\nEnter - for subtraction\nEnter * for multiplication\nEnter / for division\nEnter % for modulus\nEnter ! for factorial\n" +
+                            "Enter ^ for power\nEnter # for exit\n");
             System.out.println("Enter your choice ");
             ch = sc.next().charAt(0);
 
@@ -73,6 +78,9 @@ class Calculator {
                     break;
                 case '#':
                     System.out.println("Exiting the calculator.");
+                    break;
+                case '^':
+                    System.out.println("Power of " + num1 + " rasised to " + num2 + " is " + power(num1, num2));
                     break;
                 default:
                     System.out.println("Invalid operator.");
